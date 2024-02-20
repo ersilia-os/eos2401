@@ -1,9 +1,9 @@
 {
-    "Identifier": "",
-    "Slug": "",
-    "Status": "",
-    "Title": "",
-    "Description": "",
+    "Identifier": "eos2401",
+    "Slug": "safe-scaffold-decorator",
+    "Status": "In progress",
+    "Title": "Scaffold-Decorator",
+    "Description": "The context discusses a novel notation system called Sequential Attachment-based Fragment Embedding (SAFE) that improves upon traditional molecular string representations like SMILES. SAFE reframes SMILES strings as an unordered sequence of interconnected fragment blocks while maintaining compatibility with existing SMILES parsers.",
     "Mode": "",
     "Task": [],
     "Input": [],
@@ -12,8 +12,11 @@
     "Output Type": [],
     "Output Shape": "",
     "Interpretation": "",
-    "Tag": [],
-    "Publication": "",
-    "Source Code": "",
-    "License": ""
+    "Tag": [
+        "Compound generation",
+        "Chemical graph model"
+    ],
+    "Publication": "https://arxiv.org/pdf/2310.10773",
+    "Source Code": "https://github.com/datamol-io/safe",
+    "License": "CC BY 4.0"
 }
