@@ -2,13 +2,10 @@
 import os
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 import safe as sf
-# import datamol as dm
-from safe.utils import compute_side_chains
 from rdkit import Chem
 from rdkit.Chem.Scaffolds import rdScaffoldNetwork
 from rdkit.Chem import Descriptors
 from rdkit import Chem
-from itertools import combinations
 
 
 class MoleculeModel:
@@ -53,45 +50,16 @@ class MoleculeModel:
             return filtered_list
         else:
             return None
-        
-    
-    def _generate_smiles(self, side_chains):
-        generated_smiles = self.designer.scaffold_morphing(
-        side_chains=side_chains,
+
+    def _generate_smiles(self, scaffold):
+        generated_smiles = self.designer.scaffold_decoration(
+        scaffold=scaffold,
         n_samples_per_trial=self.n_samples_per_trial,
         n_trials=self.n_trials,
         sanitize=True,
-        do_not_fragment_further=False,
-        random_seed=100,)
+        do_not_fragment_further=True,
+                )
         return generated_smiles
-
-
-    def _get_side_chain_pairs(self, side_chains):
-        '''Function to break the side chains into pairs'''
-        side_chains_smiles = Chem.MolToSmiles(side_chains).split(".")
-        # Generating all combinations of 2 and 3 elements
-        combinations_2 = list(combinations(side_chains_smiles, 2))
-        combinations_3 = list(combinations(side_chains_smiles, 3))
-        all_combinations = combinations_2 + combinations_3
-
-        # adjust the side  chain numbering
-        modified_side_chain_pairs = []
-        for i in all_combinations:
-            modified_strings = []
-            for index, j in enumerate(i):
-                # Replace the second character with numbers starting from 1
-                new_string = j[0] + str(index + 1) + j[2:]
-                modified_strings.append(new_string)
-            modified_side_chain_pairs.append(modified_strings)
-
-        # join the side chains in each list
-        joined_side_chain_pairs = []
-        for i in modified_side_chain_pairs:
-            joined_strings = ['.'.join(j for j in i)]
-            joined_side_chain_pairs.append(joined_strings[0])
-
-        return joined_side_chain_pairs
-
 
     def run_model(self, safe):
         generated_smiles = []
@@ -99,14 +67,11 @@ class MoleculeModel:
             row = []
             if i is not None:
                 core_structures = self._extract_core_structure(i)
-                for core in core_structures:
-                    side_chain = compute_side_chains(core=core, mol=i)
-                    side_chain_pairs = self._get_side_chain_pairs(side_chain)
-                    for side_chain in side_chain_pairs:
-                        output = self._generate_smiles(side_chain)
-                        row += output
+                modified_structures = [Chem.MolToSmiles(core).replace('*', '[*]') for core in core_structures]
+                for core in modified_structures:
+                    output = self._generate_smiles(core)
+                    row += output
                 generated_smiles += [row]
             else:
                 generated_smiles += [row]
         return generated_smiles
-
