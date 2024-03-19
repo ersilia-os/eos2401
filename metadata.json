@@ -29,7 +29,6 @@
     "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos2401.zip",
     "DockerHub": "https://hub.docker.com/r/ersiliaos/eos2401",
     "Docker Architecture": [
-        "AMD64",
-        "ARM64"
+        "AMD64"
     ]
 }
