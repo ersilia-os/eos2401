@@ -16,6 +16,7 @@ RUN pip install wandb==0.16.0
 RUN pip install rdkit==2023.9.3
 RUN pip install pandas==2.1
 RUN pip install --no-deps safe-mol==0.1.4
+RUN pip install numpy==1.26.4
 RUN conda install -c conda-forge xorg-libxrender xorg-libxtst
 
 WORKDIR /repo
