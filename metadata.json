@@ -25,7 +25,7 @@
     ],
     "Publication": "https://arxiv.org/pdf/2310.10773.pdf",
     "Source Code": "https://github.com/datamol-io/safe/tree/main",
-    "License": "CC",
+    "License": "CC-BY-4.0",
     "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos2401.zip",
     "DockerHub": "https://hub.docker.com/r/ersiliaos/eos2401",
     "Docker Architecture": [
