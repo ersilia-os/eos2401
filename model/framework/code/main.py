@@ -28,7 +28,7 @@ assert input_len == output_len
 print(outputs)
 
 N_COLS = 1000
-HEADER = [f"smi_{x}" for x in range(N_COLS)]
+HEADER = ["smiles_{0}".format(str(x).zfill(3)) for x in range(N_COLS)]
 
 with open(output_file, "w", newline="") as fp:
     csv_writer = csv.writer(fp)
