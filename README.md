@@ -44,13 +44,18 @@ _10 of 1000 columns are shown_
 - **Source:** `Local`
 - **Source Type:** `External`
 - **DockerHub**: [https://hub.docker.com/r/ersiliaos/eos2401](https://hub.docker.com/r/ersiliaos/eos2401)
-- **Docker Architecture:** `AMD64`
+- **Docker Architecture:** `AMD64`, `ARM64`
 - **S3 Storage**: [https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos2401.zip](https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos2401.zip)
 
 ### Resource Consumption
 - **Model Size (Mb):** `4`
 - **Environment Size (Mb):** `6494`
+- **Image Size (Mb):** `6337.18`
 
+**Computational Performance (seconds):**
+- 10 inputs: `61.47`
+- 100 inputs: `-1`
+- 10000 inputs: `-1`
 
 ### References
 - **Source Code**: [https://github.com/datamol-io/safe/tree/main](https://github.com/datamol-io/safe/tree/main)
