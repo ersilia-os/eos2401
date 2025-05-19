@@ -25,7 +25,6 @@ input_len = len(smiles_list)
 output_len = len(outputs)
 assert input_len == output_len
 
-print(outputs)
 
 N_COLS = 1000
 HEADER = ["smiles_{0}".format(str(x).zfill(3)) for x in range(N_COLS)]
