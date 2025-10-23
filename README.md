@@ -4,6 +4,7 @@ The context discusses a novel notation system called Sequential Attachment-based
 
 This model was incorporated on 2024-02-20.
 
+
 ## Information
 ### Identifiers
 - **Ersilia Identifier:** `eos2401`
@@ -13,7 +14,7 @@ This model was incorporated on 2024-02-20.
 - **Task:** `Sampling`
 - **Subtask:** `Generation`
 - **Biomedical Area:** `Any`
-- **Target Organism:** `Not Applicable`
+- **Target Organism:** `Any`
 - **Tags:** `Compound generation`
 
 ### Input
