@@ -19,7 +19,8 @@ safe_list = [designer.smiles_to_safe(smi) for smi in smiles_list]
 
 # run model
 outputs = designer.run_model(safe_list)
-
+print(f'output length:{len(outputs)}')
+print(outputs)
 #check input and output have the same lenght
 input_len = len(smiles_list)
 output_len = len(outputs)
@@ -35,5 +36,6 @@ with open(output_file, "w", newline="") as fp:
     # Second Row onwards: Generated Smiles (Output)
     csv_writer.writerows([HEADER])
     for o in outputs:
-        print(len(o))
+        if len(o) == 0:
+            o = [None]*1000
         csv_writer.writerow(o)
