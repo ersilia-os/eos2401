@@ -1,6 +1,13 @@
 # import libraries
 import os
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
+import transformers.generation as generation
+from transformers.generation.beam_constraints import DisjunctiveConstraint, PhrasalConstraint
+
+# Make SAFE’s old import path work
+generation.DisjunctiveConstraint = DisjunctiveConstraint
+generation.PhrasalConstraint = PhrasalConstraint
+
 import safe as sf
 from rdkit import Chem
 from rdkit.Chem.Scaffolds import rdScaffoldNetwork
