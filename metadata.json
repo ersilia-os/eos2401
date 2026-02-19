@@ -37,8 +37,8 @@
     "License": "Apache-2.0",
     "Contributor": "Inyrkz",
     "Incorporation Date": "2024-02-20",
-    "Last Packaging Date": "2026-02-03",
-    "Release": "v1.0.3",
+    "Last Packaging Date": "2026-02-19",
+    "Release": "v1.0.0",
     "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos2401.zip",
     "DockerHub": "https://hub.docker.com/r/ersiliaos/eos2401",
     "Docker Architecture": [
@@ -47,9 +47,9 @@
     ],
     "Model Size": 4.0,
     "Environment Size": 2107.0,
-    "Image Size": 1953.94,
-    "Computational Performance 1": 45.4,
-    "Computational Performance 2": -1.0,
+    "Image Size": 612.85,
+    "Computational Performance 1": 46.97,
+    "Computational Performance 2": 283.72,
     "Computational Performance 3": -1.0,
     "Computational Performance 4": -1.0,
     "Computational Performance 5": -1.0
