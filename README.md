@@ -21,9 +21,9 @@ This model was incorporated on 2024-02-20.Last packaged on 2026-02-03.
 - **Input Dimension:** `1`
 
 ### Output
-- **Output Dimension:** `1000`
+- **Output Dimension:** `100`
 - **Output Consistency:** `Variable`
-- **Interpretation:** Model generates up to 1000 new molecules from input molecule by replacing side chains of the scaffold
+- **Interpretation:** Model generates up to 100 new molecules from input molecule by replacing side chains of the scaffold
 
 Below are the **Output Columns** of the model:
 | Name | Type | Direction | Description |
