@@ -39,7 +39,7 @@ Below are the **Output Columns** of the model:
 | smiles_008 | string |  | Generated molecule index 8 with the SAFE scaffold decoration algorithm |
 | smiles_009 | string |  | Generated molecule index 9 with the SAFE scaffold decoration algorithm |
 
-_10 of 1000 columns are shown_
+_10 of 100 columns are shown_
 ### Source and Deployment
 - **Source:** `Local`
 - **Source Type:** `External`
