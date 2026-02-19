@@ -18,7 +18,7 @@
     "Output": [
         "Compound"
     ],
-    "Output Dimension": 1000,
+    "Output Dimension": 100,
     "Output Consistency": "Variable",
     "Interpretation": "Model generates up to 1000 new molecules from input molecule by replacing side chains of the scaffold",
     "Tag": [
@@ -38,7 +38,7 @@
     "Contributor": "Inyrkz",
     "Incorporation Date": "2024-02-20",
     "Last Packaging Date": "2026-02-03",
-    "Release": "v1.0.0",
+    "Release": "v1.0.3",
     "S3": "https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos2401.zip",
     "DockerHub": "https://hub.docker.com/r/ersiliaos/eos2401",
     "Docker Architecture": [
