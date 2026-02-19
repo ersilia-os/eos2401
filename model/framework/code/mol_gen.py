@@ -1,10 +1,8 @@
-# import libraries
 import os
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 import transformers.generation as generation
 from transformers.generation.beam_constraints import DisjunctiveConstraint, PhrasalConstraint
 
-# Make SAFE’s old import path work
 generation.DisjunctiveConstraint = DisjunctiveConstraint
 generation.PhrasalConstraint = PhrasalConstraint
 
@@ -12,7 +10,6 @@ import safe as sf
 from rdkit import Chem
 from rdkit.Chem.Scaffolds import rdScaffoldNetwork
 from rdkit.Chem import Descriptors
-from rdkit import Chem
 
 
 class MoleculeModel:
@@ -26,54 +23,63 @@ class MoleculeModel:
     def smiles_to_safe(self, smiles):
         try:
             return sf.encode(smiles)
-        except Exception as e:
-            print(f" Error in SMILES conversion: {e}")
+        except Exception:
             return None
 
-    def _extract_core_structure(self, safe):
-        params = rdScaffoldNetwork.ScaffoldNetworkParams()
-        params.includeScaffoldsWithoutAttachments=False
-        if safe is not None:
-            mol = Chem.MolFromSmiles(safe)
-            net = rdScaffoldNetwork.CreateScaffoldNetwork([mol],params)
+    def _extract_core_structure(self, safe_str):
+        try:
+            if safe_str is None:
+                return None
+            mol = Chem.MolFromSmiles(safe_str)
+            if mol is None:
+                return None
+            params = rdScaffoldNetwork.ScaffoldNetworkParams()
+            params.includeScaffoldsWithoutAttachments = False
+            net = rdScaffoldNetwork.CreateScaffoldNetwork([mol], params)
             nodemols = [Chem.MolFromSmiles(x) for x in net.nodes]
+            nodemols = [m for m in nodemols if m is not None]
+            if not nodemols:
+                return None
 
-            filtered_list = []
-            for mol in nodemols:
-                if "*" in Chem.MolToSmiles(mol) and self.lower_molecular_weight < Descriptors.MolWt(mol) < self.upper_molecular_weight:
-                    filtered_list.append(mol)
-            
+            filtered_list = [
+                m for m in nodemols
+                if "*" in Chem.MolToSmiles(m) and self.lower_molecular_weight < Descriptors.MolWt(m) < self.upper_molecular_weight
+            ]
+
             if not filtered_list:
-                closest_mol = min(nodemols, key=lambda x: abs(Descriptors.MolWt(x) - (self.lower_molecular_weight + self.upper_molecular_weight) / 2))
-                filtered_list.append(closest_mol)
-            
-            filtered_list.sort(key=lambda x: x.GetNumHeavyAtoms())
+                target = (self.lower_molecular_weight + self.upper_molecular_weight) / 2
+                filtered_list = [min(nodemols, key=lambda x: abs(Descriptors.MolWt(x) - target))]
 
+            filtered_list.sort(key=lambda x: x.GetNumHeavyAtoms())
             return filtered_list
-        else:
+        except Exception:
             return None
 
     def _generate_smiles(self, scaffold):
-        generated_smiles = self.designer.scaffold_decoration(
-        scaffold=scaffold,
-        n_samples_per_trial=self.n_samples_per_trial,
-        n_trials=self.n_trials,
-        sanitize=True,
-        do_not_fragment_further=True,
-                )
-        return generated_smiles
+        try:
+            return self.designer.scaffold_decoration(
+                scaffold=scaffold,
+                n_samples_per_trial=self.n_samples_per_trial,
+                n_trials=self.n_trials,
+                sanitize=True,
+                do_not_fragment_further=True,
+            )
+        except Exception:
+            return None
 
-    def run_model(self, safe):
-        generated_smiles = []
-        for i in safe:
+    def run_model(self, safe_list):
+        results = []
+        for s in safe_list:
             row = []
-            if i is not None:
-                core_structures = self._extract_core_structure(i)
-                modified_structures = [Chem.MolToSmiles(core).replace('*', '[*]') for core in core_structures]
-                for core in modified_structures:
-                    output = self._generate_smiles(core)
-                    row += output
-                generated_smiles += [row]
-            else:
-                generated_smiles += [row]
-        return generated_smiles
+            if s is not None:
+                cores = self._extract_core_structure(s)
+                if cores:
+                    modified = [Chem.MolToSmiles(c).replace("*", "[*]") for c in cores if c is not None]
+                    for core in modified:
+                        out = self._generate_smiles(core)
+                        if out:
+                            row += out
+            if not row:
+                row = [None] * 100
+            results.append(row[:100] if len(row) >= 100 else row + [None] * (100 - len(row)))
+        return results
