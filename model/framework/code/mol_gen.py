@@ -16,7 +16,7 @@ from rdkit import Chem
 
 
 class MoleculeModel:
-    def __init__(self, n_trials=10, n_samples_per_trial=100, lower_molecular_weight=60, upper_molecular_weight=100):
+    def __init__(self, n_trials=1, n_samples_per_trial=100, lower_molecular_weight=60, upper_molecular_weight=100):
         self.designer = sf.SAFEDesign.load_default(verbose=True)
         self.n_trials = n_trials
         self.n_samples_per_trial = n_samples_per_trial
@@ -31,9 +31,7 @@ class MoleculeModel:
             return None
 
     def _extract_core_structure(self, safe):
-        # Define scaffold parameter network
         params = rdScaffoldNetwork.ScaffoldNetworkParams()
-        # customize parameter attributes
         params.includeScaffoldsWithoutAttachments=False
         if safe is not None:
             mol = Chem.MolFromSmiles(safe)
@@ -42,16 +40,13 @@ class MoleculeModel:
 
             filtered_list = []
             for mol in nodemols:
-                # Check for the presence of attachment points and molecular weight range
                 if "*" in Chem.MolToSmiles(mol) and self.lower_molecular_weight < Descriptors.MolWt(mol) < self.upper_molecular_weight:
                     filtered_list.append(mol)
             
-            # If there are no scaffolds within the range, select the closest one
             if not filtered_list:
                 closest_mol = min(nodemols, key=lambda x: abs(Descriptors.MolWt(x) - (self.lower_molecular_weight + self.upper_molecular_weight) / 2))
                 filtered_list.append(closest_mol)
             
-            # Sort the filtered list based on the number of heteroatoms (fewer carbons)
             filtered_list.sort(key=lambda x: x.GetNumHeavyAtoms())
 
             return filtered_list
