@@ -20,7 +20,7 @@
     ],
     "Output Dimension": 100,
     "Output Consistency": "Variable",
-    "Interpretation": "Model generates up to 1000 new molecules from input molecule by replacing side chains of the scaffold",
+    "Interpretation": "Model generates up to 100 new molecules from input molecule by replacing side chains of the scaffold",
     "Tag": [
         "Compound generation"
     ],
