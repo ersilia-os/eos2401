@@ -1,6 +1,6 @@
 # Scaffold decoration
 
-The context discusses a novel notation system called Sequential Attachment-based Fragment Embedding (SAFE) that improves upon traditional molecular string representations like SMILES. SAFE reframes SMILES strings as an unordered sequence of interconnected fragment blocks while maintaining compatibility with existing SMILES parsers. This streamlines complex molecular design tasks by facilitating autoregressive generation under various constraints. The effectiveness of SAFE is demonstrated by training a GPT2-like model on a dataset of 1.1 billion SAFE representations that exhibited versatile and robust optimization performance for molecular design.
+Sequential Attachment-based Fragment Embedding (SAFE) is a novel notation system improving upon traditional SMILES. SAFE reframes SMILES as an unordered sequence of interconnected fragment blocks, maintaining parser compatibility. This streamlines complex molecular design via autoregressive generation under constraints. The effectiveness of SAFE was shown by training a GPT2-like model on 1.1 billion SAFE representations, demonstrating versatile and robust optimization performance in molecular design.
 
 This model was incorporated on 2024-02-20.Last packaged on 2026-02-19.
 
@@ -59,7 +59,7 @@ _10 of 100 columns are shown_
 
 ### References
 - **Source Code**: [https://github.com/datamol-io/safe/tree/main](https://github.com/datamol-io/safe/tree/main)
-- **Publication**: [https://arxiv.org/pdf/2310.10773.pdf](https://arxiv.org/pdf/2310.10773.pdf)
+- **Publication**: [https://doi.org/10.48550/arXiv.2310.10773](https://doi.org/10.48550/arXiv.2310.10773)
 - **Publication Type:** `Preprint`
 - **Publication Year:** `2023`
 - **Ersilia Contributor:** [Inyrkz](https://github.com/Inyrkz)
