@@ -1,6 +1,6 @@
 # Scaffold decoration
 
-Decorates a scaffold with substituents, returning roughly 100 elaborated molecules per input. Generation runs through SAFE, a rewriting of SMILES in which a molecule is expressed as an unordered set of fragment blocks rather than a single traversal. Noutahi and colleagues showed that this reformulation lets an ordinary sequence model handle scaffold decoration, linker design and superstructure generation without task-specific machinery, while remaining fully compatible with existing SMILES tooling. Sampling is stochastic and outputs vary between runs.
+Sequential Attachment-based Fragment Embedding (SAFE) is a novel notation system improving upon traditional SMILES. SAFE reframes SMILES as an unordered sequence of interconnected fragment blocks, maintaining parser compatibility. This streamlines complex molecular design via autoregressive generation under constraints. The effectiveness of SAFE was shown by training a GPT2-like model on 1.1 billion SAFE representations, demonstrating versatile and robust optimization performance in molecular design.
 
 This model was incorporated on 2024-02-20.Last packaged on 2026-02-19.
 
@@ -23,7 +23,7 @@ This model was incorporated on 2024-02-20.Last packaged on 2026-02-19.
 ### Output
 - **Output Dimension:** `100`
 - **Output Consistency:** `Variable`
-- **Interpretation:** Up to 100 generated molecules produced by decorating the input scaffold.
+- **Interpretation:** Model generates up to 100 new molecules from input molecule by replacing side chains of the scaffold
 
 Below are the **Output Columns** of the model:
 | Name | Type | Direction | Description |
