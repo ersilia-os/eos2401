@@ -2,7 +2,7 @@
 
 Sequential Attachment-based Fragment Embedding (SAFE) is a novel notation system improving upon traditional SMILES. SAFE reframes SMILES as an unordered sequence of interconnected fragment blocks, maintaining parser compatibility. This streamlines complex molecular design via autoregressive generation under constraints. The effectiveness of SAFE was shown by training a GPT2-like model on 1.1 billion SAFE representations, demonstrating versatile and robust optimization performance in molecular design.
 
-This model was incorporated on 2024-02-20.Last packaged on 2026-02-19.
+This model was incorporated on 2024-02-20.Last packaged on 2026-09-01.
 
 ## Information
 ### Identifiers
@@ -50,10 +50,10 @@ _10 of 100 columns are shown_
 ### Resource Consumption
 - **Model Size (Mb):** `4`
 - **Environment Size (Mb):** `2152`
-- **Image Size (Mb):** `612.85`
+- **Image Size (Mb):** `2024.56`
 
 **Computational Performance (seconds):**
-- 10 inputs: `46.97`
+- 10 inputs: `42.12`
 - 100 inputs: `-1`
 - 10000 inputs: `-1`
 
