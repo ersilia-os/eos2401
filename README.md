@@ -28,16 +28,16 @@ This model was incorporated on 2024-02-20.Last packaged on 2026-02-19.
 Below are the **Output Columns** of the model:
 | Name | Type | Direction | Description |
 |------|------|-----------|-------------|
-| smiles_000 | string |  | Generated molecule index 0 with the SAFE scaffold decoration algorithm |
-| smiles_001 | string |  | Generated molecule index 1 with the SAFE scaffold decoration algorithm |
-| smiles_002 | string |  | Generated molecule index 2 with the SAFE scaffold decoration algorithm |
-| smiles_003 | string |  | Generated molecule index 3 with the SAFE scaffold decoration algorithm |
-| smiles_004 | string |  | Generated molecule index 4 with the SAFE scaffold decoration algorithm |
-| smiles_005 | string |  | Generated molecule index 5 with the SAFE scaffold decoration algorithm |
-| smiles_006 | string |  | Generated molecule index 6 with the SAFE scaffold decoration algorithm |
-| smiles_007 | string |  | Generated molecule index 7 with the SAFE scaffold decoration algorithm |
-| smiles_008 | string |  | Generated molecule index 8 with the SAFE scaffold decoration algorithm |
-| smiles_009 | string |  | Generated molecule index 9 with the SAFE scaffold decoration algorithm |
+| smi_00 | string |  | Generated molecule index 0 with the SAFE scaffold decoration algorithm |
+| smi_01 | string |  | Generated molecule index 1 with the SAFE scaffold decoration algorithm |
+| smi_02 | string |  | Generated molecule index 2 with the SAFE scaffold decoration algorithm |
+| smi_03 | string |  | Generated molecule index 3 with the SAFE scaffold decoration algorithm |
+| smi_04 | string |  | Generated molecule index 4 with the SAFE scaffold decoration algorithm |
+| smi_05 | string |  | Generated molecule index 5 with the SAFE scaffold decoration algorithm |
+| smi_06 | string |  | Generated molecule index 6 with the SAFE scaffold decoration algorithm |
+| smi_07 | string |  | Generated molecule index 7 with the SAFE scaffold decoration algorithm |
+| smi_08 | string |  | Generated molecule index 8 with the SAFE scaffold decoration algorithm |
+| smi_09 | string |  | Generated molecule index 9 with the SAFE scaffold decoration algorithm |
 
 _10 of 100 columns are shown_
 ### Source and Deployment
