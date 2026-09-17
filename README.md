@@ -2,7 +2,7 @@
 
 Sequential Attachment-based Fragment Embedding (SAFE) reframes SMILES as an unordered sequence of fragment blocks, enabling scaffold-constrained autoregressive generation with a GPT2-like model trained on 1.1 billion SAFE representations. Rather than decorating the inputs own scaffold, this model extracts one or more small (60-100 Da) ring fragments from it and grows new material off each, discarding the rest of the molecule.
 
-This model was incorporated on 2024-02-20.Last packaged on 2026-09-01.
+This model was incorporated on 2024-02-20.Last packaged on 2026-09-17.
 
 ## Information
 ### Identifiers
@@ -50,11 +50,11 @@ _10 of 100 columns are shown_
 ### Resource Consumption
 - **Model Size (Mb):** `4`
 - **Environment Size (Mb):** `2527`
-- **Image Size (Mb):** `2024.56`
+- **Image Size (Mb):** `2328.87`
 
 **Computational Performance (seconds):**
-- 10 inputs: `42.12`
-- 100 inputs: `-1`
+- 10 inputs: `44.44`
+- 100 inputs: `987.5`
 - 10000 inputs: `-1`
 
 ### References
