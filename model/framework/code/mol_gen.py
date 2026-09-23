@@ -125,7 +125,16 @@ class MoleculeModel:
                             if not o:
                                 continue
                             m = Chem.MolFromSmiles(o)
-                            key = Chem.MolToSmiles(m) if m is not None else o
+                            if m is None:
+                                continue
+                            # scaffold_decoration's raw output is not guaranteed to be a single
+                            # connected molecule: it can return salt/ion pairs or two unrelated
+                            # fragments glued together via "." (e.g. "NC=S.S=C1SN2CC=C1CC2"),
+                            # which RDKit parses without complaint. Reject anything but a single
+                            # fragment rather than passing it through as a generated compound.
+                            if len(Chem.GetMolFrags(m)) > 1:
+                                continue
+                            key = Chem.MolToSmiles(m)
                             if key in seen or key in candidates:
                                 continue
                             candidates[key] = o
