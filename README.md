@@ -1,6 +1,6 @@
 # Scaffold decoration
 
-Decorates a scaffold with substituents, returning roughly 100 elaborated molecules per input. Generation runs through SAFE, a rewriting of SMILES in which a molecule is expressed as an unordered set of fragment blocks rather than a single traversal. Noutahi and colleagues showed that this reformulation lets an ordinary sequence model handle scaffold decoration, linker design and superstructure generation without task-specific machinery, while remaining fully compatible with existing SMILES tooling. Sampling is stochastic and outputs vary between runs.
+Grows new molecules around a small ring fragment lifted out of the input rather than decorating its full scaffold, returning up to 100 structures per query. Generation runs through SAFE, a rewriting of SMILES in which a molecule becomes an unordered set of fragment blocks, with Noutahi and colleagues pretraining an 87-million-parameter GPT-2 style model on 1.1 billion SAFE strings from ZINC and UniChem. Cores of 60 to 100 Da carrying an attachment point are selected here, and sampling is stochastic, so runs differ.
 
 This model was incorporated on 2024-02-20.Last packaged on 2026-09-23.
 
@@ -23,7 +23,7 @@ This model was incorporated on 2024-02-20.Last packaged on 2026-09-23.
 ### Output
 - **Output Dimension:** `100`
 - **Output Consistency:** `Variable`
-- **Interpretation:** Up to 100 generated molecules produced by decorating the input scaffold.
+- **Interpretation:** Up to 100 molecules grown stochastically from small 60 to 100 Da ring cores extracted from the input.
 
 Below are the **Output Columns** of the model:
 | Name | Type | Direction | Description |
