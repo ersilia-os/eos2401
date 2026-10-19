@@ -1,13 +1,13 @@
-# Scaffold decoration
+# SAFE-GPT ring-seeded growth
 
-Grows new molecules around a small ring fragment lifted out of the input rather than decorating its full scaffold, returning up to 100 structures per query. Generation runs through SAFE, a rewriting of SMILES in which a molecule becomes an unordered set of fragment blocks, with Noutahi and colleagues pretraining an 87-million-parameter GPT-2 style model on 1.1 billion SAFE strings from ZINC and UniChem. Cores of 60 to 100 Da carrying an attachment point are selected here, and sampling is stochastic, so runs differ.
+Grows new molecules from small rings of the input, not around its own scaffold. It keeps one or more ring fragments of 60 to 100 Da that carry an attachment point (the closest to 80 Da if none fits), drops the rest of the molecule and shares the 100 slots between the rings. SAFE-GPT, an 87-million-parameter GPT-2 style model pretrained on 1.1 billion SAFE strings (Noutahi and colleagues), grows each ring by sampling, so runs differ. Inputs with a single ring system or no ring, and inputs SAFE cannot slice, return empty rows.
 
 This model was incorporated on 2024-02-20.Last packaged on 2026-09-23.
 
 ## Information
 ### Identifiers
 - **Ersilia Identifier:** `eos2401`
-- **Slug:** `scaffold-decoration`
+- **Slug:** `ring-seeded-growth`
 
 ### Domain
 - **Task:** `Sampling`
@@ -23,7 +23,7 @@ This model was incorporated on 2024-02-20.Last packaged on 2026-09-23.
 ### Output
 - **Output Dimension:** `100`
 - **Output Consistency:** `Variable`
-- **Interpretation:** Up to 100 molecules grown stochastically from small 60 to 100 Da ring cores extracted from the input.
+- **Interpretation:** Up to 100 molecules grown stochastically from small 60 to 100 Da ring cores of the input; unused slots stay empty, always for single-ring-system and acyclic inputs.
 
 Below are the **Output Columns** of the model:
 | Name | Type | Direction | Description |
