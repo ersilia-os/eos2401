@@ -3,7 +3,7 @@
 Grows new molecules from small rings of the input, not around its own scaffold. It keeps one or more ring fragments of 60 to 100 Da that carry an attachment point (the closest to 80 Da if none fits), drops the rest of the molecule and shares the 100 slots between the rings. SAFE-GPT, an 87-million-parameter GPT-2 style model pretrained on 1.1 billion SAFE strings (Noutahi and colleagues), grows each ring by sampling, so runs differ. Inputs with a single ring system or no ring, and inputs SAFE cannot slice, return empty rows.
 
 This model was incorporated on 2024-02-20.
-Last packaged on 2026-09-23.
+Last packaged on 2026-11-20.
 
 ## Information
 ### Identifiers
@@ -51,11 +51,11 @@ _10 of 100 columns are shown_
 ### Resource Consumption
 - **Model Size (Mb):** `338`
 - **Environment Size (Mb):** `2533`
-- **Image Size (Mb):** `2328.15`
+- **Image Size (Mb):** `981.72`
 
 **Computational Performance (seconds):**
-- 10 inputs: `44.05`
-- 100 inputs: `887.05`
+- 10 inputs: `31.55`
+- 100 inputs: `908.52`
 - 10000 inputs: `-1`
 
 ### References
